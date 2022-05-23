@@ -3,13 +3,15 @@ import React from 'react';
 export function CommunitySection() {
 	return (
 		<section className="app-section app-section--big-community">
-			<h2 class="app-title dark">
-				Big Community of<br/>
-				People Like You
-			</h2>
-			<button className="app-section--big-community_button">
-				Hide section
-			</button>
+			<div className="app-section--big-community_title-block">
+				<h2 class="app-title dark">
+					Big Community of<br/>
+					People Like You
+				</h2>
+				<button className="app-section--big-community_button">
+					Hide section
+				</button>
+			</div>
 			<h3 class="app-subtitle dark">
 				We’re proud of our products, and we’re really excited<br/>
 				when we get feedback from our users.

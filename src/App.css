@@ -65,13 +65,24 @@ h3.dark {
 }
 
 .app-section--big-community h2 {
-	margin-top: 90px;
 	margin-bottom: 10px;
 }
 
+.app-section--big-community_title-block {
+	align-items: center;
+	margin-top: 50px;
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
 .app-section--big-community_button {
-	color: red;
-	border: 2px solid red;
+	background-color: transparent;
+	width: 140px;
+	height: 60px;
+	margin: 20px 60px 0 220px;
+	color: #ea3518;
+	border: 3px solid #ea3518;
 }
 
 .app-section__members {
