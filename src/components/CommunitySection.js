@@ -1,52 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getUsers } from '../js/server-requests.js';
+import { Users } from './Users.js';
 
 export function CommunitySection() {
+
+	const [ isHide, setIsHide ] = useState(false);
+	const [ users, setUsers] = useState([]);
+ 
+		useEffect(() => {
+			getUsers()
+			.then((response) => {
+				return response.json()})
+			.then(setUsers);
+		}, []);
+
 	return (
 		<section className="app-section app-section--big-community">
-			<div className="app-section--big-community_title-block">
-				<h2 class="app-title dark">
+			<div className={`app-section--big-community_title-block
+											${isHide ? 'add-margin' : ''}`}>
+				<h2 className="app-title dark">
 					Big Community of<br/>
 					People Like You
 				</h2>
-				<button className="app-section--big-community_button">
-					Hide section
+				<button className="app-section--big-community_button"
+					onClick={ () => setIsHide(!isHide)}>
+					{!isHide ? "Hide section" : "Show section"}
 				</button>
 			</div>
-			<h3 class="app-subtitle dark">
-				We’re proud of our products, and we’re really excited<br/>
-				when we get feedback from our users.
-			</h3>
-			<div class="app-section__users">
-			</div>
+			{!isHide && 
+				<>
+					<h3 className="app-subtitle dark">
+						We’re proud of our products, and we’re really excited<br/>
+						when we get feedback from our users.
+					</h3>
+					<Users users={users} />
+				</>}
 		</section>
 	)
 }
-
-{/*export const USER_CONTAINER_CLASS = 'app-section__members';
-export const USER_CARD_CLASS = 'app-section__member-card';
-export const USER_REVIEW = 'PLACEHOLDER: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do incididunt ut labore et dolor.';
-
- addUsers(users) {
-    const usersContainer = document.querySelector('.app-section__users');
-    usersContainer.classList = constants.USER_CONTAINER_CLASS;
-    // eslint-disable-next-line
-    users.map((user) => {
-      const userCard = document.createElement('div');
-      userCard.classList = constants.USER_CARD_CLASS;
-
-      const review = user.review || constants.USER_REVIEW;
-      userCard.innerHTML =
-				`<img src='${user.avatar}' class="app-section__member-img"
-					alt="User 		photo"/>
-				<p class="app-section__member-review">
-				${review}
-				</p>
-				<div class="app-section__member-name">
-				${user.firstName} ${user.lastName}
-				</div>
-				<div class="app-section__member-position">
-				${user.position}
-				</div>`;
-      usersContainer.appendChild(userCard);
-    });
-  } */}

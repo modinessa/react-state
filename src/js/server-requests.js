@@ -1,4 +1,4 @@
-const url = '/api';
+const url = 'http://localhost:3001';
 
 export function getUsers() {
   return fetch(`${url}/community`, {

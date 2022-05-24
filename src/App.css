@@ -51,6 +51,14 @@ main {
 	font-family: 'Source Sans Pro', sans-serif, Arial;
 }
 
+.app-section__button {
+	background-color: #55c2d8;
+	border: none;
+	color: white;
+	cursor: pointer;
+	outline: none;
+}
+
 h2.dark {
 	color: #464547;
 }
@@ -66,6 +74,10 @@ h3.dark {
 
 .app-section--big-community h2 {
 	margin-bottom: 10px;
+}
+
+.add-margin {
+	margin-bottom: 90px;
 }
 
 .app-section--big-community_title-block {
@@ -85,7 +97,7 @@ h3.dark {
 	border: 3px solid #ea3518;
 }
 
-.app-section__members {
+.app-section__users {
 	display: flex;
 }
 
@@ -172,11 +184,10 @@ h3.dark {
 	display: none;
 }
 
-.advanced {
-	width: 645px;
-	margin-left: 27%;
-	margin-right: 27%;
+.unsubscribe button {
+	width: 130px;
 }
+
 
 .app-section--image-joun-us h3 {
 	color: rgba(255, 255, 255, 0.7);
@@ -211,10 +222,6 @@ h3.dark {
 
 .app-section__join-us--button:disabled {
 	opacity: 0.5;
-}
-
-.advanced button {
-	width: 190px;
 }
 
 @media only screen and (max-width: 768px) {
