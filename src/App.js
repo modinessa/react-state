@@ -1,5 +1,5 @@
-import './App.css';
-import { CommunitySection } from './components/CommunitySection';
+import "./App.css";
+import { CommunitySection } from "./components/CommunitySection";
 import {JoinSection} from "./components/JoinSection"
 
 function App() {

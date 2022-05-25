@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { subscribe, unsubscribe } from "../js/server-requests.js";
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as constants from "../constants/constants.js";
+import {objToString} from "../js/objToString.js";
+import { yupResolver } from "@hookform/resolvers/yup";
+import {createRegExp} from "../js/email-validator";
 import * as yup from "yup";
 
+
+const emailRules = constants.VALID_EMAIL_ENDINGS;
 const schema = yup.object({
-  email: yup.string().required().matches(/^[A-Za-z\s]+$/i),
-});
+  email: yup.string().required()
+						.matches(createRegExp(emailRules),)});
 
 export function JoinSection() {
 
@@ -16,22 +21,36 @@ export function JoinSection() {
 		handleSubmit,
 		formState
 	} = useForm(
-		//{resolver: yupResolver(schema)}
+		{resolver: yupResolver(schema)}
 	);
 
-	const { isSubmitting } = formState;
+	const { isSubmitting, errors } = formState;
+
 	const onSubmit = (data) => {
-		console.log(isSubscribed);
-		setIsSubscribed(!isSubscribed);
-		
 		if(!isSubscribed) {
-			return subscribe(data.email);
+			if (!errors.email) {
+				subscribe(data.email)
+				.then((response) => {
+					if (!response.ok) {
+						response.json()
+							.then((error) => {
+								window.alert(error.error);
+							})
+					} else {	
+						setIsSubscribed(!isSubscribed);
+					}
+				})
+			} 
+			
 		} else {	
-			return unsubscribe();
+			unsubscribe();
+			setIsSubscribed(!isSubscribed);
 		}
 	};
 
-	const onError = (errors, e) => console.log(errors, e);
+	const onError = (errors) => {
+		window.alert(errors.email.message);
+	}
 
 	return (
 		<section className="app-section app-section--image-joun-us">

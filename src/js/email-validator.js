@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import * as constants from '../constants/constants.js';
+import * as constants from "../constants/constants.js";
 
 export function validate(email) {
   const regExp = createRegExp(constants.VALID_EMAIL_ENDINGS);
@@ -18,7 +18,7 @@ export function validateWithThrow(email) {
   if (regExp.test(email)) {
     return true;
   }
-  throw new Error('Provided email is invalid!');
+  throw new Error("Provided email is invalid!");
 }
 
 export function validateWithLog(email) {
@@ -30,8 +30,8 @@ export function createRegExp(endingArray) {
   const regExp = new RegExp(
     endingArray.map(element => `${element}$`)
       .toString()
-      .replace(/,/g, '|'),
-    'gi',
+      .replace(/,/g, "|"),
+    "gi",
   );
   return regExp;
 }
