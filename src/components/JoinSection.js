@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { subscribe, unsubscribe } from "../js/server-requests.js";
 import * as constants from "../constants/constants.js";
-import {objToString} from "../js/objToString.js";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {createRegExp} from "../js/email-validator";
 import * as yup from "yup";
 
-
-const emailRules = constants.VALID_EMAIL_ENDINGS;
 const schema = yup.object({
-  email: yup.string().required()
-						.matches(createRegExp(emailRules),)});
+  email: yup.string().required("Please Enter your Email")
+						.matches(createRegExp(constants.VALID_EMAIL_ENDINGS),
+						'Your Email must end with "gmail.com", "outlook.com", or "yandex.									ru"')});
 
 export function JoinSection() {
 
 	const [isSubscribed, setIsSubscribed] = useState(false);
+
 	const {
 		register,
 		handleSubmit,
@@ -69,12 +68,10 @@ export function JoinSection() {
 								type="email" id="user-email" name="email" placeholder="Email"/>
 				<button id="subBtn" type="submit"
 								className="app-section__button app-section__join-us--button"
-								disabled={isSubmitting} >
+								disabled={isSubmitting}>
 					{!isSubscribed ? "Subscribe" : "Unsubscribe"}
-					{isSubmitting}
 				</button>
 			</form>
 		</section>
-
 	)
 }

@@ -7,7 +7,7 @@
 					{users.map((user) => (
 						<div key={user.id} className = {constants.USER_CARD_CLASS}>
 							<img src={user.avatar} className="app-section__member-img"
-									alt="User photo"/>
+									alt="User"/>
 							<p className="app-section__member-review">
 								{constants.USER_REVIEW}
 							</p>
