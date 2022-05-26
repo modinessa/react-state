@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { subscribe, unsubscribe } from "../js/server-requests.js";
 import * as constants from "../constants/constants.js";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {createRegExp} from "../js/email-validator";
+import { createRegExp } from "../js/email-validator";
 import * as yup from "yup";
+import { setIsSubscribed } from "./reducer";
+import { useSelector, useDispatch } from "react-redux";
 
 const schema = yup.object({
   email: yup.string().required("Please Enter your Email")
@@ -12,8 +14,9 @@ const schema = yup.object({
 						'Your Email must end with "gmail.com", "outlook.com", or "yandex.ru"')});
 
 export function JoinSection() {
-
-	const [isSubscribed, setIsSubscribed] = useState(false);
+	const dispatch = useDispatch();
+	const {isSubscribed} =useSelector((state) => state.users);
+	//const [isSubscribed, setIsSubscribed] = useState(false);
 
 	const {
 		register,
@@ -36,14 +39,14 @@ export function JoinSection() {
 								window.alert(error.error);
 							})
 					} else {	
-						setIsSubscribed(!isSubscribed);
+						dispatch(setIsSubscribed(!isSubscribed));
 					}
 				})
 			} 
 			
 		} else {	
 			unsubscribe();
-			setIsSubscribed(!isSubscribed);
+			dispatch(setIsSubscribed(!isSubscribed));
 		}
 	};
 

@@ -5,7 +5,7 @@ export const usersSlice = createSlice({
 	initialState: {
 			isHide: false,
 			users: [],
-			isSubscribe: false,
+			isSubscribed: false,
 	},
 	reducers: {
 		setIsHide: (state, {payload}) => {
@@ -13,9 +13,12 @@ export const usersSlice = createSlice({
 		},
 		setUsers: (state, {payload}) => {
 			state.users = payload;
+		},
+		setIsSubscribed: (state, {payload}) => {
+			state.isSubscribed = payload;
 		}
 	}
 });
 
-export const {setIsHide, setUsers} = usersSlice.actions;
+export const {setIsHide, setUsers, setIsSubscribed} = usersSlice.actions;
 export default usersSlice.reducer;
