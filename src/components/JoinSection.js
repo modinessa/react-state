@@ -9,7 +9,7 @@ import * as yup from "yup";
 const schema = yup.object({
   email: yup.string().required("Please Enter your Email")
 						.matches(createRegExp(constants.VALID_EMAIL_ENDINGS),
-						'Your Email must end with "gmail.com", "outlook.com", or "yandex.									ru"')});
+						'Your Email must end with "gmail.com", "outlook.com", or "yandex.ru"')});
 
 export function JoinSection() {
 

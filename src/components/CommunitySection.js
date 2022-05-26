@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { getUsers } from "../js/server-requests.js";
 import { Users } from "./Users.js";
+import { useSelector, useDispatch } from "react-redux";
+import {setUsers, setIsHide} from "./reducer";
 
 export function CommunitySection() {
-
-	const [ isHide, setIsHide ] = useState(false);
-	const [ users, setUsers] = useState([]);
+	const {users, isHide} = useSelector((state) => state.users);
+	const dispatch = useDispatch();
  
 		useEffect(() => {
 			getUsers()
-			.then((response) => {
-				return response.json()})
-			.then(setUsers);
+			.then((response) => response.json())
+			.then((newUsers) => {
+				dispatch(setUsers(newUsers));
+			})
 		}, []);
 
 	return (
@@ -23,7 +25,7 @@ export function CommunitySection() {
 					People Like You
 				</h2>
 				<button className="app-section--big-community_button"
-					onClick={ () => setIsHide(!isHide)}>
+					onClick={ () => dispatch(setIsHide(!isHide))}>
 					{!isHide ? "Hide section" : "Show section"}
 				</button>
 			</div>
