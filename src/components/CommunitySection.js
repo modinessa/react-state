@@ -4,7 +4,8 @@ import { Users } from "./Users.js";
 
 export function CommunitySection() {
 
-	const [ isHide, setIsHide ] = useState(false);
+	const [ isHide, setIsHide ] = useState(localStorage
+				.getItem("IsHide") === "true" || false);
 	const [ users, setUsers] = useState([]);
  
 		useEffect(() => {
@@ -23,7 +24,11 @@ export function CommunitySection() {
 					People Like You
 				</h2>
 				<button className="app-section--big-community_button"
-					onClick={ () => setIsHide(!isHide)}>
+					onClick={ () => {
+						//isHide = !isHide;
+						setIsHide(!isHide);
+						localStorage.setItem("IsHide", !isHide);
+					}}>
 					{!isHide ? "Hide section" : "Show section"}
 				</button>
 			</div>
