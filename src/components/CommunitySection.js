@@ -39,7 +39,8 @@ export function CommunitySection() {
 						when we get feedback from our users.
 					</h3>
 					<Users users={users} />
-				</>}
+				</>
+			}
 		</section>
 	)
 }
