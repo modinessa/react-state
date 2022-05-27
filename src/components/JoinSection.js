@@ -14,6 +14,7 @@ const schema = yup.object({
 export function JoinSection() {
 
 	const [isSubscribed, setIsSubscribed] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const {
 		register,
@@ -23,27 +24,35 @@ export function JoinSection() {
 		{resolver: yupResolver(schema)}
 	);
 
-	const { isSubmitting, errors } = formState;
+	const { errors } = formState;
 
 	const onSubmit = (data) => {
 		if(!isSubscribed) {
 			if (!errors.email) {
-				subscribe(data.email)
-				.then((response) => {
-					if (!response.ok) {
-						response.json()
-							.then((error) => {
-								window.alert(error.error);
-							})
-					} else {	
-						setIsSubscribed(!isSubscribed);
-					}
-				})
+				setIsSubmitting(!isSubmitting);
+				setTimeout(() => {
+					subscribe(data.email)
+					.then((response) => {
+						if (!response.ok) {
+							response.json()
+								.then((error) => {
+									window.alert(error.error);
+								})
+						} else {	
+							setIsSubscribed(!isSubscribed);
+							setIsSubmitting(false);
+						}
+					})
+				}, 2000)
 			} 
 			
-		} else {	
-			unsubscribe();
-			setIsSubscribed(!isSubscribed);
+		} else {
+			setIsSubmitting(!isSubmitting);
+			setTimeout(() => {
+				unsubscribe();
+				setIsSubscribed(!isSubscribed);
+				setIsSubmitting(false)
+			}, 2000)
 		}
 	};
 
@@ -53,7 +62,7 @@ export function JoinSection() {
 
 	return (
 		<section className="app-section app-section--image-joun-us">
-			<h2 className="app-title">
+			<h2 className="app-title" onClick={() => console.log(isSubmitting)}>
       	Join Our Program
     	</h2>
 			<h3 className="app-subtitle">
