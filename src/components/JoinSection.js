@@ -40,8 +40,8 @@ export function JoinSection() {
 								})
 						} else {	
 							setIsSubscribed(!isSubscribed);
-							setIsSubmitting(false);
 						}
+						setIsSubmitting(false);
 					})
 				}, 2000)
 			} 
