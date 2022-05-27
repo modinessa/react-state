@@ -1,20 +1,16 @@
 import React, { useEffect } from "react";
-import { getUsers } from "../js/server-requests.js";
 import { Users } from "./Users.js";
 import { useSelector, useDispatch } from "react-redux";
-import {setUsers, setIsHide} from "./reducer";
+import { fetchUsers, setIsHide} from "./reducer";
+
 
 export function CommunitySection() {
 	const {users, isHide} = useSelector((state) => state.users);
 	const dispatch = useDispatch();
- 
-		useEffect(() => {
-			getUsers()
-			.then((response) => response.json())
-			.then((newUsers) => {
-				dispatch(setUsers(newUsers));
-			})
-		}, []);
+
+	useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
 	return (
 		<section className="app-section app-section--big-community">

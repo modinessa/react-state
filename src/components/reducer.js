@@ -1,4 +1,12 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import { getUsers } from "../js/server-requests.js";
+
+export const fetchUsers = createAsyncThunk(
+  'users/fetchUsers',
+  async () => {
+  return getUsers()
+	.then((response) => response.json())
+ });
 
 export const usersSlice = createSlice({
 	name: "users",
@@ -7,12 +15,14 @@ export const usersSlice = createSlice({
 			users: [],
 			isSubscribed: false,
 	},
+	extraReducers: {
+      [fetchUsers.fulfilled] : (state, action) => {
+        state.users = action.payload;
+      }
+  },
 	reducers: {
 		setIsHide: (state, {payload}) => {
 			state.isHide = payload;
-		},
-		setUsers: (state, {payload}) => {
-			state.users = payload;
 		},
 		setIsSubscribed: (state, {payload}) => {
 			state.isSubscribed = payload;
@@ -20,5 +30,5 @@ export const usersSlice = createSlice({
 	}
 });
 
-export const {setIsHide, setUsers, setIsSubscribed} = usersSlice.actions;
+export const {setIsHide, setIsSubscribed} = usersSlice.actions;
 export default usersSlice.reducer;
