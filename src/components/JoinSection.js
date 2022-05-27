@@ -41,8 +41,8 @@ export function JoinSection() {
 								})
 						} else {	
 							dispatch(setIsSubscribed(!isSubscribed));
-							dispatch(setIsSubmitting(false));
 						}
+						dispatch(setIsSubmitting(false));
 					})
 				}, 2000);
 			} 
