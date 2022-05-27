@@ -9,6 +9,7 @@ export function CommunitySection() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		// eslint-disable-next-line
     dispatch(fetchUsers());
   }, []);
 

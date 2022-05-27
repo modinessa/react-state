@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { subscribe, unsubscribe } from "../js/server-requests.js";
 import * as constants from "../constants/constants.js";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createRegExp } from "../js/email-validator";
 import * as yup from "yup";
-import { setIsSubscribed } from "./reducer";
+import { setIsSubscribed, setIsSubmitting } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 
 const schema = yup.object({
@@ -15,8 +15,7 @@ const schema = yup.object({
 
 export function JoinSection() {
 	const dispatch = useDispatch();
-	const {isSubscribed} =useSelector((state) => state.users);
-	//const [isSubscribed, setIsSubscribed] = useState(false);
+	const {isSubscribed, isSubmitting} = useSelector((state) => state.users);
 
 	const {
 		register,
@@ -26,27 +25,35 @@ export function JoinSection() {
 		{resolver: yupResolver(schema)}
 	);
 
-	const { isSubmitting, errors } = formState;
+	const { errors } = formState;
 
 	const onSubmit = (data) => {
 		if(!isSubscribed) {
 			if (!errors.email) {
-				subscribe(data.email)
-				.then((response) => {
-					if (!response.ok) {
-						response.json()
-							.then((error) => {
-								window.alert(error.error);
-							})
-					} else {	
-						dispatch(setIsSubscribed(!isSubscribed));
-					}
-				})
+				dispatch(setIsSubmitting(!isSubmitting));
+				setTimeout(() => {
+					subscribe(data.email)
+					.then((response) => {
+						if (!response.ok) {
+							response.json()
+								.then((error) => {
+									window.alert(error.error);
+								})
+						} else {	
+							dispatch(setIsSubscribed(!isSubscribed));
+							dispatch(setIsSubmitting(false));
+						}
+					})
+				}, 2000);
 			} 
 			
 		} else {	
-			unsubscribe();
-			dispatch(setIsSubscribed(!isSubscribed));
+			dispatch(setIsSubmitting(!isSubmitting));
+			setTimeout(() => {
+				unsubscribe();
+				dispatch(setIsSubscribed(!isSubscribed));
+				dispatch(setIsSubmitting(false));
+			}, 2000);
 		}
 	};
 
