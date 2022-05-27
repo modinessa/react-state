@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import * as constants from "../constants/constants.js";
+import * as constants from "../constants/constants";
 
 export function validate(email) {
   const regExp = createRegExp(constants.VALID_EMAIL_ENDINGS);

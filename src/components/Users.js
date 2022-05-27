@@ -1,5 +1,5 @@
 import React from "react";
-import * as constants from "../constants/constants.js";
+import * as constants from "../constants/constants";
 
 export function Users({users}) {
 	return (

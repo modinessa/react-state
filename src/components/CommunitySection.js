@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Users } from "./Users.js";
+import { Users } from "./Users";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers, setIsHide} from "./reducer";
 

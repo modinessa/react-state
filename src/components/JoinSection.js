@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { subscribe, unsubscribe } from "../js/server-requests.js";
-import * as constants from "../constants/constants.js";
+import { subscribe, unsubscribe } from "../utils/server-requests";
+import * as constants from "../constants/constants";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createRegExp } from "../js/email-validator";
+import { createRegExp } from "../utils/email-validator";
 import * as yup from "yup";
 import { setIsSubscribed, setIsSubmitting } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
