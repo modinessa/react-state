@@ -8,12 +8,12 @@ export function CommunitySection() {
 				.getItem("IsHide") === "true" || false);
 	const [ users, setUsers] = useState([]);
  
-		useEffect(() => {
-			getUsers()
-			.then((response) => {
-				return response.json()})
-			.then(setUsers);
-		}, []);
+	useEffect(() => {
+		getUsers()
+		.then((response) => {
+			return response.json()})
+		.then(setUsers);
+	}, []);
 
 	return (
 		<section className="app-section app-section--big-community">
@@ -25,7 +25,6 @@ export function CommunitySection() {
 				</h2>
 				<button className="app-section--big-community_button"
 					onClick={ () => {
-						//isHide = !isHide;
 						setIsHide(!isHide);
 						localStorage.setItem("IsHide", !isHide);
 					}}>
