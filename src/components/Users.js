@@ -5,18 +5,18 @@
 			return (
 				<div className="app-section__users ">
 					{users.map((user) => (
-						<div key={user.id} className = {constants.USER_CARD_CLASS}>
-							<img src={user.avatar} className="app-section__member-img"
-									alt="User"/>
-							<p className="app-section__member-review">
-								{constants.USER_REVIEW}
-							</p>
-							<div className="app-section__member-name">
-								{user.firstName} {user.lastName}
-							</div>
-							<div className="app-section__member-position">
-								{user.position}
-							</div>
+					<div key={user.id} className = {constants.USER_CARD_CLASS}>
+						<img src={user.avatar} className="app-section__member-img"
+								alt="User"/>
+						<p className="app-section__member-review">
+							{constants.USER_REVIEW}
+						</p>
+						<div className="app-section__member-name">
+							{user.firstName} {user.lastName}
+						</div>
+						<div className="app-section__member-position">
+							{user.position}
+						</div>
 					</div>
 					))}
 				</div>
