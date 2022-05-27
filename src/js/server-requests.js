@@ -1,4 +1,5 @@
-const url = 'http://localhost:3000';
+//const url = 'http://localhost:3000';
+const url = '';
 
 export function getUsers() {
   return fetch(`${url}/community`, {
