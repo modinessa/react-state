@@ -9,8 +9,8 @@ export function CommunitySection() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		dispatch(fetchUsers());
 		// eslint-disable-next-line
-    dispatch(fetchUsers());
   }, []);
 
 	return (
@@ -22,7 +22,7 @@ export function CommunitySection() {
 					People Like You
 				</h2>
 				<button className="app-section--big-community_button"
-					onClick={ () => dispatch(setIsHide(!isHide))}>
+								onClick={ () => dispatch(setIsHide(!isHide))}>
 					{!isHide ? "Hide section" : "Show section"}
 				</button>
 			</div>
@@ -33,7 +33,8 @@ export function CommunitySection() {
 						when we get feedback from our users.
 					</h3>
 					<Users users={users} />
-				</>}
+				</>
+			}
 		</section>
 	)
 }

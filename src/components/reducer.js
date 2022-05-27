@@ -4,9 +4,10 @@ import { getUsers } from "../js/server-requests.js";
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers',
   async () => {
-  return getUsers()
-	.then((response) => response.json())
- });
+		return getUsers()
+		.then((response) => response.json())
+ }
+);
 
 export const usersSlice = createSlice({
 	name: "users",
