@@ -5,7 +5,7 @@ import * as constants from "../constants/constants";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createRegExp } from "../utils/email-validator";
 import * as yup from "yup";
-import { setIsSubscribed, setIsSubmitting } from "./reducer";
+import { setIsSubscribed } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 
 const schema = yup.object({
@@ -15,7 +15,7 @@ const schema = yup.object({
 
 export function JoinSection() {
 	const dispatch = useDispatch();
-	const {isSubscribed, isSubmitting} = useSelector((state) => state.users);
+	const {isSubscribed} = useSelector((state) => state.users);
 
 	const {
 		register,
@@ -25,35 +25,27 @@ export function JoinSection() {
 		{resolver: yupResolver(schema)}
 	);
 
-	const { errors } = formState;
+	const { errors, isSubmitting } = formState;
 
 	const onSubmit = (data) => {
 		if(!isSubscribed) {
 			if (!errors.email) {
-				dispatch(setIsSubmitting(!isSubmitting));
-				setTimeout(() => {
-					subscribe(data.email)
-					.then((response) => {
-						if (!response.ok) {
-							response.json()
-								.then((error) => {
-									window.alert(error.error);
-								})
-						} else {	
-							dispatch(setIsSubscribed(!isSubscribed));
-						}
-						dispatch(setIsSubmitting(false));
-					})
-				}, 2000);
-			} 
-			
+				
+				subscribe(data.email)
+				.then((response) => {
+					if (!response.ok) {
+						response.json()
+							.then((error) => {
+								window.alert(error.error);
+							})
+					} else {	
+						dispatch(setIsSubscribed(!isSubscribed));
+					}
+				})
+			} 	
 		} else {	
-			dispatch(setIsSubmitting(!isSubmitting));
-			setTimeout(() => {
-				unsubscribe();
-				dispatch(setIsSubscribed(!isSubscribed));
-				dispatch(setIsSubmitting(false));
-			}, 2000);
+			unsubscribe();
+			dispatch(setIsSubscribed(!isSubscribed));
 		}
 	};
 
