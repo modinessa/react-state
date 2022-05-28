@@ -37,6 +37,12 @@ main {
 	flex-direction: column;
 }
 
+.app-logo {
+	width: 64px;
+	height: 64px;
+	object-fit: contain;
+}
+
 .app-title {
 	font-size: 3.25rem;
 	line-height: 4rem;
@@ -65,6 +71,115 @@ h2.dark {
 
 h3.dark {
 	color: #666666;
+}
+
+.app-navigation {
+	background-color: transparent;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 64px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: .5fr 1fr .5fr;
+	padding: 0 140px;
+}
+
+.app-navigation__logo {
+	color: white;
+	justify-self: flex-start;
+	align-self: flex-end;
+	font-size: initial;
+	letter-spacing: 2.4px;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.app-navigation__nav {
+	display: inline-block;
+}
+
+.app-navigation__nav-list {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-column-gap: 32px;
+	justify-items: center;
+	padding: 0;
+	margin: 55px 0 0 0;
+	list-style: none;
+}
+
+.app-navigation__nav-list-item {
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 2.4px;
+}
+
+.app-navigation__nav-list-item a:hover {
+	text-decoration: underline;
+}
+
+.app-navigation__nav-list-item a {
+	color: white;
+	text-decoration: none;
+}
+
+.app-navigation__nav-menu-button {
+	display: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	box-sizing: content-box;
+	color: white;
+	cursor: pointer;
+	font-size: 0;
+	transition: all 0.25s ease-out;
+	outline: none;
+	padding: 6px;
+	position: relative;
+	user-select: none;
+}
+
+.app-navigation__nav-menu-button-icon {
+	width: 28px;
+	height: 18px;
+	position: relative;
+	display: inline-block;
+	font-size: 0;
+}
+
+.app-navigation__nav-menu-button-icon span {
+	background-color: white;
+	position: absolute;
+	border-radius: 2px;
+	transition: transform .5s ease-in-out;
+	width: 100%;
+	height: 2px;
+	left: 0;
+	transform: rotate(0);
+}
+
+.app-navigation__nav-menu-button-icon span:nth-child(1) {
+	top: 0;
+}
+
+.app-navigation__nav-menu-button-icon span:nth-child(2) {
+	top: 8px;
+	visibility: visible;
+}
+
+.app-navigation__nav-menu-button-icon span:nth-child(3) {
+	bottom: 0;
+}
+
+.app-section--image-peak {
+	background: linear-gradient(to top, rgba(65, 65, 65, .5), rgba(65, 65, 65, .5)), url(../public/your-image-here.jpg) no-repeat center/cover;
+	height: 800px;
+	max-width: 100%;
+	color: white;
 }
 
 
@@ -155,8 +270,9 @@ h3.dark {
 }
 
 .app-section--image-joun-us {
-	background: linear-gradient(to top, rgba(5, 17, 18, 0.5), rgba(5, 17, 18, 0.5)),
-		url(../public//your-image-join.png) no-repeat center;
+	background: linear-gradient(to top, rgba(5, 17, 18, 0.5),
+			rgba(5, 17, 18, 0.5)),
+		url(../public/your-image-join.png) no-repeat center;
 	box-sizing: border-box;
 	color: white;
 	justify-content: space-between;
@@ -227,6 +343,21 @@ h3.dark {
 @media only screen and (max-width: 768px) {
 	html {
 		min-width: 480px;
+	}
+
+	.app-navigation {
+		grid-template-columns: 1fr 1fr;
+		padding: 0 32px;
+	}
+
+	.app-navigation__nav-menu-button {
+		display: inline-block;
+		justify-self: flex-end;
+		align-self: flex-end;
+	}
+
+	.app-navigation__nav {
+		display: none;
 	}
 
 	div.app-section__members>:not(:first-child) {
