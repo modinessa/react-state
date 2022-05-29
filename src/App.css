@@ -99,7 +99,7 @@ h3.dark {
 }
 
 .app-navigation__nav {
-	display: inline-block;
+	display: flex;
 }
 
 .app-navigation__nav-list {
@@ -118,11 +118,11 @@ h3.dark {
 	letter-spacing: 2.4px;
 }
 
-.app-navigation__nav-list-item a:hover {
+.app-navigation__nav-list-item:hover {
 	text-decoration: underline;
 }
 
-.app-navigation__nav-list-item a {
+.app-navigation__nav-list-item {
 	color: white;
 	text-decoration: none;
 }
@@ -177,9 +177,18 @@ h3.dark {
 
 .app-section--image-peak {
 	background: linear-gradient(to top, rgba(65, 65, 65, .5), rgba(65, 65, 65, .5)), url(../public/your-image-here.jpg) no-repeat center/cover;
-	height: 800px;
 	max-width: 100%;
 	color: white;
+}
+
+.app-section--main-page {
+	height: 800px;
+}
+
+.app-section--general {
+	height: 120px;
+	background-position: top;
+
 }
 
 
@@ -231,7 +240,7 @@ h3.dark {
 	text-align: center;
 }
 
-.app-section__member-card:hover {
+.app-section__member-card-select:hover {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -399,4 +408,25 @@ h3.dark {
 		margin-top: 45px;
 		margin-bottom: 0;
 	}
+}
+
+.user-link {
+	text-decoration-color: #55c2d8;
+}
+
+.app-section_not-found {
+	background-color: rgb(180, 180, 180);
+}
+
+.app-not-found {
+	width: 600px;
+	height: 230px;
+	padding: 20px 60px;
+	box-sizing: border-box;
+	margin-bottom: 30px;
+}
+
+.link-not-found {
+	text-decoration: none;
+	color: #55c2d8;
 }
