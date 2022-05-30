@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import { useFormState } from "react-hook-form";
 import { getUsers } from "../utils/server-requests";
 
 export const fetchUsers = createAsyncThunk(
@@ -10,10 +9,14 @@ export const fetchUsers = createAsyncThunk(
  }
 );
 
+//const isSubscribed = localStorage.getItem('isSubscribed') === 'true';
+
+const isHide = localStorage.getItem('isHide') === 'true';
+
 export const usersSlice = createSlice({
 	name: "users",
 	initialState: {
-			isHide: false,
+			isHide,
 			users: [],
 			isSubscribed: false,
 			isSubmitting: false,
@@ -27,9 +30,11 @@ export const usersSlice = createSlice({
 	reducers: {
 		setIsHide: (state, {payload}) => {
 			state.isHide = payload;
+			localStorage.setItem('isHide', payload);
 		},
 		setIsSubscribed: (state, {payload}) => {
 			state.isSubscribed = payload;
+			localStorage.setItem('isSubscribed', payload);
 		},
 		setIsSubmitting: (state, {payload}) => {
 			state.isSubmitting = payload;

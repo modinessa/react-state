@@ -4,10 +4,11 @@ import { Header } from "./components/Header";
 import { Navigation } from "./components/Navigation";
 import { CommunitySection } from "./components/CommunitySection";
 import { PageNotFound } from "./components/PageNotFound";
-import {JoinSection} from "./components/JoinSection";
-import {User} from "./components/User";
+import { JoinSection } from "./components/JoinSection";
+import { User } from "./components/User";
 
 function App() {
+
   return (
 		<main id="app-container">
 			<div>
@@ -15,7 +16,12 @@ function App() {
 				<Header />
 			</div>
 			<Routes>
-				<Route exact path="/" element={<JoinSection/>}/>
+				<Route exact path="/" element={
+					<>
+						<CommunitySection/>
+						<JoinSection/>
+					</>
+				}/>
 				<Route path="/community" element={<CommunitySection/>}></Route>
 				<Route path="/community/:id" element={<User/>}/>
 				<Route path="*" element={<PageNotFound/>}/>

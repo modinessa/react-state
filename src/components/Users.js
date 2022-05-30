@@ -12,7 +12,7 @@ export function Users({users}) {
 				<p className="app-section__member-review">
 					{constants.USER_REVIEW}
 				</p>
-				<Link to={user.id} className="user-link">
+				<Link to={`/community/${user.id}`} className="user-link">
 					<div className="app-section__member-name">
 						{user.firstName} {user.lastName}
 					</div>

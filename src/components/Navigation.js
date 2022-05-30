@@ -14,27 +14,19 @@ export function Navigation() {
 						Community
 					</Link>
 
-					<Link to="not-found" className="app-navigation__nav-list-item">
+					<Link to="about us" className="app-navigation__nav-list-item">
 						About us
 					</Link>
 
-					<Link to="not-found" className="app-navigation__nav-list-item">
+					<Link to="projects" className="app-navigation__nav-list-item">
 						Projects
 					</Link>
 
-					<Link to="not-found" className="app-navigation__nav-list-item">
+					<Link to="contact" className="app-navigation__nav-list-item">
 						Contact
 					</Link>
 				</ul>
 			</nav>
-
-			<div className="app-navigation__nav-menu-button">
-				<div className="app-navigation__nav-menu-button-icon">
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</div>
 		</div>
 	)
 }

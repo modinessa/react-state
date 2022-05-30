@@ -3,15 +3,12 @@ import { Users } from "./Users";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers, setIsHide} from "./reducer";
 
-
 export function CommunitySection() {
 	const {users, isHide} = useSelector((state) => state.users);
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(fetchUsers());
-		// eslint-disable-next-line
-  }, []);
+	// eslint-disable-next-line
+	useEffect(() => {dispatch(fetchUsers())}, []);
 
 	return (
 		<section className="app-section app-section--big-community">

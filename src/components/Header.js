@@ -9,7 +9,7 @@ export function Header() {
 		<header className="app-section app-section--main-page app-section--image-peak">
 		<img 
 				src={bigLogo}
-				alt="Logo icon picture" className="app-logo"
+				alt="Logo icon" className="app-logo"
 		/>
 		<h1 className="app-title">
 			Your Headline <br />

@@ -16,7 +16,6 @@ const schema = yup.object({
 export function JoinSection() {
 	const dispatch = useDispatch();
 	const {isSubscribed} = useSelector((state) => state.users);
-
 	const {
 		register,
 		handleSubmit,
@@ -24,13 +23,11 @@ export function JoinSection() {
 	} = useForm(
 		{resolver: yupResolver(schema)}
 	);
-
 	const { errors, isSubmitting } = formState;
 
 	const onSubmit = (data) => {
 		if(!isSubscribed) {
 			if (!errors.email) {
-				
 				subscribe(data.email)
 				.then((response) => {
 					if (!response.ok) {
