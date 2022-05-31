@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JoinSection renders component 1`] = `
+<section
+  className="app-section app-section--image-joun-us"
+>
+  <h2
+    className="app-title"
+  >
+    Join Our Program
+  </h2>
+  <h3
+    className="app-subtitle"
+  >
+    Sed do eiusmod tempor incididunt
+    <br />
+    ut labore et dolore magna aliqua.
+  </h3>
+  <form
+    className="app-section--form-join-us
+											 "
+    name="EmailForm"
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="user-email-input"
+      className="app-section--email-join-us"
+      id="user-email"
+      name="email"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Email"
+      type="email"
+    />
+    <button
+      aria-label="submit-button"
+      className="app-section__button app-section__join-us--button"
+      disabled={false}
+      id="subBtn"
+      type="submit"
+    >
+      Subscribe
+    </button>
+  </form>
+</section>
+`;

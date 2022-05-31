@@ -7,6 +7,10 @@ export function getUsers() {
   });
 }
 
+export function getUser(id) {
+	return fetch(`/community/${id}`);
+}
+
 export function subscribe(email) {
   return fetch(`${url}/subscribe`, {
     method: 'POST',
@@ -20,7 +24,3 @@ export function subscribe(email) {
 export function unsubscribe() {
   return fetch(`${url}/unsubscribe`, { method: 'POST' });
 }
-
-export function postMetrics(metrics) {
-	return navigator.sendBeacon(`${url}/analytics/performance`, new Blob([JSON.stringify(metrics)]))
-} 

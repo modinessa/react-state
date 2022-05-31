@@ -7,18 +7,17 @@ export function Header() {
 
 	return location.pathname === '/' ? (
 		<header className="app-section app-section--main-page app-section--image-peak">
-		<img 
-				src={bigLogo}
-				alt="Logo icon" className="app-logo"
-		/>
+		<img src={bigLogo}
+				 alt="Logo icon"
+				 className="app-logo"/>
 		<h1 className="app-title">
 			Your Headline <br />
 			Here
-			</h1>
-			<h2 className="app-subtitle">
-				Lorem ipsum dolor sit amet, consectetur <br />
-				adipiscing elit sed do eiusmod.
-			</h2>
+		</h1>
+		<h2 className="app-subtitle">
+			Lorem ipsum dolor sit amet, consectetur <br />
+			adipiscing elit sed do eiusmod.
+		</h2>
 	</header>
 	) : (
 		<header className="app-section app-section--general app-section--image-peak">

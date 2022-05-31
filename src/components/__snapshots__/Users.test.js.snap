@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Users renders component with users 1`] = `
+<div
+  className="app-section__users "
+>
+  <div
+    className="app-section__member-card app-section__member-card-select"
+  >
+    <img
+      alt="User"
+      className="app-section__member-img"
+      src="fake_url"
+    />
+    <p
+      className="app-section__member-review"
+    >
+      PLACEHOLDER: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do incididunt ut labore et dolor.
+    </p>
+    <a
+      className="user-link"
+      href="/community/fake_id"
+      onClick={[Function]}
+    >
+      <div
+        className="app-section__member-name"
+      >
+        first
+         
+        last
+      </div>
+    </a>
+    <div
+      className="app-section__member-position"
+    >
+      test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Users renders component without users 1`] = `
+<div
+  className="app-section__users "
+/>
+`;

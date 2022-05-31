@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommunitySection renders component 1`] = `
+<section
+  className="app-section app-section--big-community"
+>
+  <div
+    className="app-section--big-community_title-block
+											"
+  >
+    <h2
+      className="app-title dark"
+    >
+      Big Community of
+      <br />
+      People Like You
+    </h2>
+    <button
+      aria-label="hide-users-section"
+      className="app-section--big-community_button"
+      onClick={[Function]}
+    >
+      Hide section
+    </button>
+  </div>
+  <h3
+    className="app-subtitle dark"
+  >
+    We’re proud of our products, and we’re really excited
+    <br />
+    when we get feedback from our users.
+  </h3>
+  <div
+    className="app-section__users "
+  />
+</section>
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound renders component 1`] = `
+<div
+  className="app-section"
+>
+  <div
+    className="app-not-found"
+  >
+    <h2>
+      Page Not found
+    </h2>
+    <p>
+      Looks like you've followed a broken link or entered a URL that doesn't exist on this site.
+    </p>
+    <a
+      className="link-not-found"
+      href="/"
+      onClick={[Function]}
+    >
+      ⟵ Back to our site
+    </a>
+  </div>
+</div>
+`;

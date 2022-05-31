@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation renders component 1`] = `
+<div
+  className="app-navigation"
+>
+  <a
+    className="app-navigation__logo"
+    href="/"
+    onClick={[Function]}
+  >
+    Project
+  </a>
+  <nav
+    className="app-navigation__nav"
+  >
+    <ul
+      className="app-navigation__nav-list"
+    >
+      <a
+        className="app-navigation__nav-list-item"
+        href="/community"
+        onClick={[Function]}
+      >
+        Community
+      </a>
+      <a
+        className="app-navigation__nav-list-item"
+        href="/about us"
+        onClick={[Function]}
+      >
+        About us
+      </a>
+      <a
+        className="app-navigation__nav-list-item"
+        href="/projects"
+        onClick={[Function]}
+      >
+        Projects
+      </a>
+      <a
+        className="app-navigation__nav-list-item"
+        href="/contact"
+        onClick={[Function]}
+      >
+        Contact
+      </a>
+    </ul>
+  </nav>
+</div>
+`;

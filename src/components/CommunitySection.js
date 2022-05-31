@@ -19,6 +19,7 @@ export function CommunitySection() {
 					People Like You
 				</h2>
 				<button className="app-section--big-community_button"
+								aria-label="hide-users-section"
 								onClick={ () => dispatch(setIsHide(!isHide))}>
 					{!isHide ? "Hide section" : "Show section"}
 				</button>

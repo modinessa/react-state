@@ -3,10 +3,19 @@ import { useForm } from "react-hook-form";
 import { subscribe, unsubscribe } from "../utils/server-requests";
 import * as constants from "../constants/constants";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createRegExp } from "../utils/email-validator";
 import * as yup from "yup";
 import { setIsSubscribed } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
+
+function createRegExp(endingArray) {
+  const regExp = new RegExp(
+    endingArray.map(element => `${element}$`)
+      .toString()
+      .replace(/,/g, "|"),
+    "gi",
+  );
+  return regExp;
+}
 
 const schema = yup.object({
   email: yup.string().required("Please Enter your Email")
@@ -25,7 +34,7 @@ export function JoinSection() {
 	);
 	const { errors, isSubmitting } = formState;
 
-	const onSubmit = (data) => {
+	function onSubmit(data) {
 		if(!isSubscribed) {
 			if (!errors.email) {
 				subscribe(data.email)
@@ -36,13 +45,13 @@ export function JoinSection() {
 								window.alert(error.error);
 							})
 					} else {	
-						dispatch(setIsSubscribed(!isSubscribed));
+						dispatch(setIsSubscribed(true));
 					}
 				})
-			} 	
+			}
 		} else {	
 			unsubscribe();
-			dispatch(setIsSubscribed(!isSubscribed));
+			dispatch(setIsSubscribed(false));
 		}
 	};
 
@@ -64,8 +73,14 @@ export function JoinSection() {
 						name="EmailForm"
 						onSubmit={handleSubmit(onSubmit, onError)}>
 				<input {...register("email")} className="app-section--email-join-us"
-								type="email" id="user-email" name="email" placeholder="Email"/>
-				<button id="subBtn" type="submit"
+								type="email"
+								aria-label="user-email-input"
+								id="user-email" 
+								name="email" 
+								placeholder="Email"/>
+				<button id="subBtn"
+							  type="submit"
+								aria-label="submit-button"
 								className="app-section__button app-section__join-us--button"
 								disabled={isSubmitting}>
 					{!isSubscribed ? "Subscribe" : "Unsubscribe"}

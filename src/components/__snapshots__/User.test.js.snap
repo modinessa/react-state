@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User renders component with user information 1`] = `
+<div
+  className="app-section"
+>
+  <div
+    className="app-section__member-card"
+  >
+    <img
+      alt="User"
+      className="app-section__member-img"
+      src="fake_url"
+    />
+    <p
+      className="app-section__member-review"
+    >
+      PLACEHOLDER: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do incididunt ut labore et dolor.
+    </p>
+    <div
+      className="app-section__member-name"
+    >
+      first
+       
+      last
+    </div>
+    <div
+      className="app-section__member-position"
+    >
+      test
+    </div>
+  </div>
+</div>
+`;

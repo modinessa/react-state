@@ -1,26 +1,23 @@
 import {useParams, useNavigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import * as constants from "../constants/constants";
-import {setUser} from "./reducer";
+import {fetchUser, setUser} from "./reducer";
+import { useEffect } from "react";
 
 export function User() {
 	const {id} = useParams();
-	const {user} = useSelector((state) => state.users);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	if (user?.id !== id) {
-		dispatch(setUser(null));
-	}
+	console.log(id);
 
-	if (!user) {
-		fetch(`/community/${id}`)
-			.then((response) => response.json())
-			.then((user) => {
-				dispatch(setUser(user));
-			}, () => {
-				navigate('/not-found');
-			});
+	useEffect(() => {
+		dispatch(fetchUser(id));
+	});
+
+	const {user, userNotFound} = useSelector((state) => state.users);
+	if (userNotFound) {
+		navigate('/not-found');
 	}
 
 	return user ? (

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders full header for main page 1`] = `
+<header
+  className="app-section app-section--main-page app-section--image-peak"
+>
+  <img
+    alt="Logo icon"
+    className="app-logo"
+    src="your-logo-here.png"
+  />
+  <h1
+    className="app-title"
+  >
+    Your Headline 
+    <br />
+    Here
+  </h1>
+  <h2
+    className="app-subtitle"
+  >
+    Lorem ipsum dolor sit amet, consectetur 
+    <br />
+    adipiscing elit sed do eiusmod.
+  </h2>
+</header>
+`;
+
+exports[`Header renders header for other than main page 1`] = `
+<header
+  className="app-section app-section--general app-section--image-peak"
+/>
+`;
