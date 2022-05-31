@@ -1,7 +1,7 @@
 import {useParams, useNavigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import * as constants from "../constants/constants";
-import {fetchUser, setUser} from "./reducer";
+import {fetchUser} from "./reducer";
 import { useEffect } from "react";
 
 export function User() {

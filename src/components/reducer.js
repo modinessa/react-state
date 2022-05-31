@@ -17,8 +17,6 @@ export const fetchUser = createAsyncThunk(
 	}
 )
 
-//const isSubscribed = localStorage.getItem('isSubscribed') === 'true';
-
 const isHide = localStorage.getItem('isHide') === 'true';
 
 export const usersSlice = createSlice({
